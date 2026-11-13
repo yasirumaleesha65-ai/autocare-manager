@@ -13,10 +13,14 @@ import ForgotPasswordPage from "@/pages/auth/ForgotPasswordPage";
 import VerifyResetOTPPage from "@/pages/auth/VerifyResetOTPPage";
 import ResetPasswordPage from "@/pages/auth/ResetPasswordPage";
 import { useAuth } from "@/context/AuthContext";
+import CustomerManagementPage from "@/features/customers/pages/CustomerManagementPage";
+import CreateCustomerPage from "@/features/customers/pages/CreateCustomerPage";
+import CustomerDetailsPage from "@/features/customers/pages/CustomerDetailsPage";
+import EditCustomerPage from "@/features/customers/pages/EditCustomerPage";
+import CustomerAccessRoute from "@/components/common/CustomerAccessRoute";
 
 // Keep your existing login page
 import LoginPage from "@/pages/LoginPage";
-import { Button } from "@base-ui/react/button";
 import { LogOut } from "lucide-react";
 
 function EmployeeDashboard() {
@@ -50,7 +54,6 @@ export default function App() {
       {/* Authenticated routes */}
       <Route element={<ProtectedRoute />}>
         <Route path="/dashboard" element={<EmployeeDashboard />} />
-        <Route path="/login" element={<LoginPage />} />
 
         {/* Manager-only routes */}
         <Route element={<ManagerRoute />}>
@@ -63,8 +66,16 @@ export default function App() {
               path="staff/set-password"
               element={<SetStaffPasswordPage />}
             />
+          </Route>
+        </Route>
 
-            {/* Staff Management will be added here */}
+        {/* Manager and Receptionist routes */}
+        <Route element={<CustomerAccessRoute />}>
+          <Route path="/manager" element={<ManagerLayout />}>
+            <Route path="customers" element={<CustomerManagementPage />} />
+            <Route path="customers/new" element={<CreateCustomerPage />} />
+            <Route path="customers/:id" element={<CustomerDetailsPage />} />
+            <Route path="customers/:id/edit" element={<EditCustomerPage />} />
           </Route>
         </Route>
       </Route>
