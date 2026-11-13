@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import connectDB from "./config/database.js";
 import authRoutes from "./routes/authRoutes.js";
 import customerRoutes from "./routes/customerRoutes.js";
+import vehicleRoutes from "./routes/vehicleRoutes.js";
 dotenv.config();
 
 const app = express();
@@ -26,6 +27,7 @@ app.get("/", (req, res) => {
 });
 app.use("/api/auth", authRoutes);
 app.use("/api/customers", customerRoutes);
+app.use("/api/vehicles", vehicleRoutes);
 const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
