@@ -18,7 +18,11 @@ import CreateCustomerPage from "@/features/customers/pages/CreateCustomerPage";
 import CustomerDetailsPage from "@/features/customers/pages/CustomerDetailsPage";
 import EditCustomerPage from "@/features/customers/pages/EditCustomerPage";
 import CustomerAccessRoute from "@/components/common/CustomerAccessRoute";
-
+import VehicleManagementPage from "@/features/vehicles/pages/VehicleManagementPage";
+import CreateVehiclePage from "@/features/vehicles/pages/CreateVehiclePage";
+import VehicleDetailsPage from "@/features/vehicles/pages/VehicleDetailsPage";
+import EditVehiclePage from "@/features/vehicles/pages/EditVehiclePage";
+import TransferVehicleOwnershipPage from "@/features/vehicles/pages/TransferVehicleOwnershipPage";
 // Keep your existing login page
 import LoginPage from "@/pages/LoginPage";
 import { LogOut } from "lucide-react";
@@ -76,6 +80,14 @@ export default function App() {
             <Route path="customers/new" element={<CreateCustomerPage />} />
             <Route path="customers/:id" element={<CustomerDetailsPage />} />
             <Route path="customers/:id/edit" element={<EditCustomerPage />} />
+            <Route path="vehicles" element={<VehicleManagementPage />} />
+            <Route path="vehicles/new" element={<CreateVehiclePage />} />
+            <Route path="vehicles/:id" element={<VehicleDetailsPage />} />
+            <Route path="vehicles/:id/edit" element={<EditVehiclePage />} />
+            <Route
+              path="vehicles/:id/transfer"
+              element={<TransferVehicleOwnershipPage />}
+            />
           </Route>
         </Route>
       </Route>
